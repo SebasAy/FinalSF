@@ -8,6 +8,11 @@ using UnityEngine;
 /// </summary>
 public class AudioSyncer : MonoBehaviour
 {
+    public float bias;
+    public float timeStep;
+    public float timeToBeat;
+    public float restSmoothTime;
+  
 
     /// <summary>
     /// Inherit this to cause some behavior on each beat
@@ -56,10 +61,7 @@ public class AudioSyncer : MonoBehaviour
         OnUpdate();
     }
 
-    public float bias;
-    public float timeStep;
-    public float timeToBeat;
-    public float restSmoothTime;
+    
 
     private float m_previousAudioValue;
     private float m_audioValue;
