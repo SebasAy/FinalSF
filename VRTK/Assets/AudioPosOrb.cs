@@ -4,44 +4,47 @@ using UnityEngine;
 
 public class AudioPosOrb : AudioSyncer
 {
-    private IEnumerator MoveToPosition(Vector3 _target)
+    public float maxYPosition = 2.0f; // La posición máxima en el eje Y a la que llegará el objeto
+    public float minYPosition = 0.0f; // La posición mínima en el eje Y a la que regresará el objeto
+    public float moveSpeed = 1.0f; // Velocidad de movimiento gradual
+
+    private Vector3 initialPosition;
+    private float targetYPosition;
+
+    private IEnumerator MoveToTargetPosition(float _targetY)
     {
-        Vector3 _curr = transform.position;
-        Vector3 _initial = _curr;
         float _timer = 0;
 
         while (_timer < timeToBeat)
         {
             float t = _timer / timeToBeat;
-            _curr = Vector3.Lerp(_initial, _target, t);
-            _curr.y = Mathf.Lerp(_initial.y, _target.y + beatScale.y, Mathf.Sin(t * Mathf.PI)); // Aplica la función senoidal a la posición en Y
+            float newY = Mathf.Lerp(initialPosition.y, _targetY, Mathf.Sin(t * Mathf.PI / 2)); // Aplica una función senoidal
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
             _timer += Time.deltaTime;
-
-            transform.position = _curr;
 
             yield return null;
         }
 
+        // Asegurarse de que el objeto esté en la posición exacta después de la transición
+        transform.position = new Vector3(transform.position.x, _targetY, transform.position.z);
+
         m_isBeat = false;
-    }
-
-    public override void OnUpdate()
-    {
-        base.OnUpdate();
-
-        if (m_isBeat) return;
-
-        transform.position = Vector3.Lerp(transform.position, restPosition, restSmoothTime * Time.deltaTime); // Ajusta la posición en lugar de escala
     }
 
     public override void OnBeat()
     {
         base.OnBeat();
 
-        StopCoroutine("MoveToPosition");
-        StartCoroutine("MoveToPosition", beatPosition);
+        initialPosition = transform.position;
+
+        // Determina una nueva posición Y de destino al azar dentro del rango especificado
+        targetYPosition = Random.Range(minYPosition, maxYPosition);
+
+        StartCoroutine("MoveToTargetPosition", targetYPosition);
     }
 
-    public Vector3 beatPosition;
-    public Vector3 restPosition;
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+    }
 }
