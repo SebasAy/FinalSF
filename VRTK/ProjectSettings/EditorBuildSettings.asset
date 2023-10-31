@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Pablo/SuCucha 1.unity
+    path: Assets/Scenes/SuCucha 1.unity
     guid: 7040689c6a5834447afa8c31777109bd
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 3aa59f3b61c1d3f438379e0167c574f7, type: 2}
