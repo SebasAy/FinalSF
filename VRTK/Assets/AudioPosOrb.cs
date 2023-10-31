@@ -2,30 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioPsdOrb : AudioSyncer
+public class AudioPosOrb : AudioSyncer
 {
-    public Transform centerObject; // El objeto alrededor del cual orbitará
-    public float orbitSpeed = 1.0f; // Velocidad de órbita
-    public float orbitHeight = 1.0f; // Altura de órbita
-    public float orbitAmplitude = 1.0f; // Amplitud de la órbita
-    public TrailRenderer trailRenderer; // Referencia al Trail Renderer
-
-    private Vector3 initialPosition;
-    private Vector3 beatPosition;
-
     private IEnumerator MoveToPosition(Vector3 _target)
     {
         Vector3 _curr = transform.position;
+        Vector3 _initial = _curr;
         float _timer = 0;
 
         while (_timer < timeToBeat)
         {
-            _curr = Vector3.Lerp(initialPosition, _target, _timer / timeToBeat);
+            float t = _timer / timeToBeat;
+            _curr = Vector3.Lerp(_initial, _target, t);
+            _curr.y = Mathf.Lerp(_initial.y, _target.y + beatScale.y, Mathf.Sin(t * Mathf.PI)); // Aplica la función senoidal a la posición en Y
             _timer += Time.deltaTime;
 
             transform.position = _curr;
-
-            _UpdateTrailRenderer(_curr); // Actualiza el Trail Renderer
 
             yield return null;
         }
@@ -33,34 +25,23 @@ public class AudioPsdOrb : AudioSyncer
         m_isBeat = false;
     }
 
-    public void Start()
-    {
-        initialPosition = transform.position;
-    }
-
     public override void OnUpdate()
     {
         base.OnUpdate();
 
-        if (m_isBeat)
-        {
-            beatPosition = new Vector3(
-                initialPosition.x + Mathf.Sin(Time.time * orbitSpeed) * orbitAmplitude,
-                initialPosition.y + Mathf.Sin(Time.time * orbitSpeed) * orbitHeight,
-                initialPosition.z + Mathf.Cos(Time.time * orbitSpeed) * orbitAmplitude
-            );
+        if (m_isBeat) return;
 
-            StopCoroutine("MoveToPosition");
-            StartCoroutine("MoveToPosition", beatPosition);
-        }
+        transform.position = Vector3.Lerp(transform.position, restPosition, restSmoothTime * Time.deltaTime); // Ajusta la posición en lugar de escala
     }
 
-    // Función para actualizar el Trail Renderer
-    private void _UpdateTrailRenderer(Vector3 newPosition)
+    public override void OnBeat()
     {
-        if (trailRenderer != null)
-        {
-            trailRenderer.AddPosition(newPosition);
-        }
+        base.OnBeat();
+
+        StopCoroutine("MoveToPosition");
+        StartCoroutine("MoveToPosition", beatPosition);
     }
+
+    public Vector3 beatPosition;
+    public Vector3 restPosition;
 }
