@@ -7,8 +7,6 @@ public class AudioColor : AudioSyncer
     public Color[] beatColors;
     public Color restColor;
 
-    [SerializeField] public float restSmoothTime = 1.0f;
-
     private int m_randomIndx;
     private Renderer m_renderer;
     private Material m_material;

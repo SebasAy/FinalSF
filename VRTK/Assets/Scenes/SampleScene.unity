@@ -3242,6 +3242,9 @@ PrefabInstance:
     - {fileID: 1963499097918898468, guid: 0b7cf9fb003cfc244ae3c2b064c78944, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b7cf9fb003cfc244ae3c2b064c78944, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1339564939}
     - targetCorrespondingSourceObject: {fileID: -7725249023527997449, guid: 0b7cf9fb003cfc244ae3c2b064c78944, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1130417870}
@@ -3677,6 +3680,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b7cf9fb003cfc244ae3c2b064c78944, type: 3}
   m_PrefabInstance: {fileID: 1130417868}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1339564939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339564937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb127847d4edde478e73f968e9d3c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerObject: {fileID: 1339564937}
+  hexagonPrefab: {fileID: 9167254427733333444, guid: 85cf783e5ff334e4682c775f8494347a, type: 3}
+  numberOfHexagons: 1
+  orbitRadius: 20
+  orbitSpeed: 30
 --- !u!1 &1343085912
 GameObject:
   m_ObjectHideFlags: 0
@@ -4642,7 +4662,6 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0.69796467, a: 0}
   - {r: 1, g: 0.99149597, b: 0, a: 0}
   restColor: {r: 0, g: 0, b: 0, a: 0}
-  restSmoothTime: 1
 --- !u!114 &1669266746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5112,7 +5131,6 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0.69796467, a: 0}
   - {r: 1, g: 0.99149597, b: 0, a: 0}
   restColor: {r: 0, g: 0, b: 0, a: 0}
-  restSmoothTime: 1
 --- !u!114 &1711236980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5976,7 +5994,6 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0.69796467, a: 0}
   - {r: 1, g: 0.99149597, b: 0, a: 0}
   restColor: {r: 0, g: 0, b: 0, a: 0}
-  restSmoothTime: 1
 --- !u!114 &2004895803
 MonoBehaviour:
   m_ObjectHideFlags: 0

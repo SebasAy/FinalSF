@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioPodOrb : AudioSyncer
+public class AudioPsdOrb : AudioSyncer
 {
     public Transform centerObject; // El objeto alrededor del cual orbitará
     public float orbitSpeed = 1.0f; // Velocidad de órbita
     public float orbitHeight = 1.0f; // Altura de órbita
     public float orbitAmplitude = 1.0f; // Amplitud de la órbita
+    public TrailRenderer trailRenderer; // Referencia al Trail Renderer
 
     private Vector3 initialPosition;
     private Vector3 beatPosition;
@@ -24,6 +25,8 @@ public class AudioPodOrb : AudioSyncer
 
             transform.position = _curr;
 
+            _UpdateTrailRenderer(_curr); // Actualiza el Trail Renderer
+
             yield return null;
         }
 
@@ -32,7 +35,6 @@ public class AudioPodOrb : AudioSyncer
 
     public void Start()
     {
-
         initialPosition = transform.position;
     }
 
@@ -50,6 +52,15 @@ public class AudioPodOrb : AudioSyncer
 
             StopCoroutine("MoveToPosition");
             StartCoroutine("MoveToPosition", beatPosition);
+        }
+    }
+
+    // Función para actualizar el Trail Renderer
+    private void _UpdateTrailRenderer(Vector3 newPosition)
+    {
+        if (trailRenderer != null)
+        {
+            trailRenderer.AddPosition(newPosition);
         }
     }
 }
