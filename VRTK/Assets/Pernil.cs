@@ -11,6 +11,9 @@ public class Pernil : AudioSyncer
     public Vector3 beatScale; // Declaración de la variable beatScale
     public Vector3 restScale;
 
+    private TerrainData terrainData;
+    private float[,] originalHeights; // Almacena las alturas originales del terreno
+
     private float[] audioSpectrum;
 
     private IEnumerator MoveToScale(Vector3 _target)
@@ -52,10 +55,11 @@ public class Pernil : AudioSyncer
     // Llamado en cada fotograma
     void Update()
     {
-        audioSpectrum = AudioListener.GetSpectrumData(1024, 0, FFTWindow.Blackman);
-
-        // Modificar el terreno basado en el espectro de frecuencia
-        ModifyTerrain();
+        if (Application.isPlaying)
+        {
+            audioSpectrum = AudioListener.GetSpectrumData(1024, 0, FFTWindow.Blackman);
+            ModifyTerrain();
+        }
     }
 
     void ModifyTerrain()
@@ -72,11 +76,31 @@ public class Pernil : AudioSyncer
                 float sample = audioSpectrum[x] * audioSpectrum[y] * sensitivity;
                 float heightValue = heights[x, y];
                 heightValue += sample * heightMultiplier;
-                heightValue = Mathf.Clamp01(heightValue); // Asegura que la altura est� entre 0 y 1
+                heightValue = Mathf.Clamp01(heightValue);
                 heights[x, y] = heightValue;
             }
         }
 
         terrainData.SetHeights(0, 0, heights);
+    }
+
+    // Restablecer el terreno a un plano al inicio del juego
+    void Start()
+    {
+        if (Application.isPlaying)
+        {
+            terrainData = terrain.terrainData;
+            int width = terrainData.heightmapResolution;
+            int height = terrainData.heightmapResolution;
+            originalHeights = new float[width, height];
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    originalHeights[x, y] = 0f; // Restablece la altura a 0 para un plano
+                }
+            }
+            terrainData.SetHeights(0, 0, originalHeights);
+        }
     }
 }
