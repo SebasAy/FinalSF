@@ -147,8 +147,8 @@ GameObject:
   - component: {fileID: 3605447998954245252}
   - component: {fileID: 3644737607686388949}
   - component: {fileID: 6857364251241893049}
-  - component: {fileID: 8436250942290796075}
   - component: {fileID: 7379371011632892710}
+  - component: {fileID: -4213139101239130871}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -165,9 +165,9 @@ Transform:
   m_GameObject: {fileID: 8656306816658691047}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.561634, y: 3.5726585, z: 43.747543}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -123.12999, y: 127.37, z: -78.34}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4579067219481345453}
   m_Father: {fileID: 0}
@@ -200,7 +200,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 55de5b7613c6bf3429803aebdc55d34a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -222,7 +222,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8436250942290796075
+--- !u!114 &7379371011632892710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656306816658691047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74dc7d1af199d0941b93c393f7c3a6a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bias: 1
+  timeStep: 0.15
+  timeToBeat: 0.05
+  restSmoothTime: 1
+  maxYPosition: 130
+  minYPosition: 124
+  moveSpeed: 20
+  initialPosition: {x: -123.13, y: 127.37, z: 0}
+--- !u!135 &-4213139101239130871
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,23 +262,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7379371011632892710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8656306816658691047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74dc7d1af199d0941b93c393f7c3a6a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bias: 1
-  timeStep: 0.15
-  timeToBeat: 0.05
-  restSmoothTime: 1
-  maxYPosition: 2
-  minYPosition: -2
-  moveSpeed: 20
+  m_Center: {x: 0, y: 0, z: -78.34}

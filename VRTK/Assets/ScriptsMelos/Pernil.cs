@@ -7,7 +7,7 @@ public class Pernil : AudioSyncer
     public Terrain terrain;
     public float heightMultiplier = 2.0f;
     public float sensitivity = 1.0f;
-    public Vector3 beatScale; // Declaración de la variable beatScale
+    public Vector3 beatScale; // DeclaraciÃ³n de la variable beatScale
     public Vector3 restScale;
 
     private TerrainData terrainData;
@@ -52,6 +52,7 @@ public class Pernil : AudioSyncer
     }
 
     // Llamado en cada fotograma
+    [System.Obsolete]
     void Update()
     {
         if (Application.isPlaying)
@@ -68,19 +69,30 @@ public class Pernil : AudioSyncer
         int height = terrainData.heightmapResolution;
         float[,] heights = terrainData.GetHeights(0, 0, width, height);
 
-        for (int x = 0; x < width; x++)
+        int halfWidth = width / 2;
+        int halfHeight = height / 2;
+
+        for (int x = 0; x < halfWidth; x++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < halfHeight; y++)
             {
                 float sample = audioSpectrum[x] * audioSpectrum[y] * sensitivity;
-                float heightValue = heights[x, y];
-                heightValue += sample * heightMultiplier;
-                heightValue = Mathf.Clamp01(heightValue);
-                heights[x, y] = heightValue;
+                ModifyHeight(heights, x, y, sample);
+                ModifyHeight(heights, width - x - 1, y, sample);
+                ModifyHeight(heights, x, height - y - 1, sample);
+                ModifyHeight(heights, width - x - 1, height - y - 1, sample);
             }
         }
 
         terrainData.SetHeights(0, 0, heights);
+    }
+
+    void ModifyHeight(float[,] heights, int x, int y, float sample)
+    {
+        float heightValue = heights[x, y];
+        heightValue += sample * heightMultiplier;
+        heightValue = Mathf.Clamp01(heightValue);
+        heights[x, y] = heightValue;
     }
 
     // Restablecer el terreno a un plano al inicio del juego

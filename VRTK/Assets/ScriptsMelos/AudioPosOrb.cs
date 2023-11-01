@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AudioPosOrb : AudioSyncer
 {
-    public float maxYPosition = 2.0f; // La posición máxima en el eje Y a la que llegará el objeto
-    public float minYPosition = 0.0f; // La posición mínima en el eje Y a la que regresará el objeto
+    public float maxYPosition = 3.0f; // La posición máxima en el eje Y a la que llegará el objeto
+    public float minYPosition = -3.0f; // La posición mínima en el eje Y a la que regresará el objeto
     public float moveSpeed = 1.0f; // Velocidad de movimiento gradual
 
-    private Vector3 initialPosition;
+    public Vector3 initialPosition;
     private float targetYPosition;
 
     private IEnumerator MoveToTargetPosition(float _targetY)
