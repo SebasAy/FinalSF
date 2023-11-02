@@ -66,7 +66,6 @@ GameObject:
   - component: {fileID: 443626050872607088}
   - component: {fileID: 443626050872607089}
   - component: {fileID: 443626050872607090}
-  - component: {fileID: 443626050872607091}
   - component: {fileID: 443626050872607100}
   - component: {fileID: 6411714305553468205}
   m_Layer: 0
@@ -205,27 +204,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &443626050872607091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443626050872607092}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4fca6c418d3f9341bb8337a8cd7e402, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bias: 50
-  timeStep: 0.15
-  timeToBeat: 0.05
-  restSmoothTime: 1
-  beatColors:
-  - {r: 0, g: 1, b: 0.82566833, a: 0}
-  - {r: 1, g: 0, b: 0.69796467, a: 0}
-  - {r: 1, g: 0.99149597, b: 0, a: 0}
-  restColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &443626050872607100
 MonoBehaviour:
   m_ObjectHideFlags: 0
