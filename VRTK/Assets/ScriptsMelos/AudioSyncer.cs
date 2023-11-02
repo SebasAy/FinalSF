@@ -24,6 +24,11 @@ public class AudioSyncer : MonoBehaviour
         m_isBeat = true;
     }
 
+    public void Start()
+    {
+        bias = Random.Range(0f, 70f);
+    }
+
     /// <summary>
     /// Inherit this to do whatever you want in Unity's update function
     /// Typically, this is used to arrive at some rest state..
