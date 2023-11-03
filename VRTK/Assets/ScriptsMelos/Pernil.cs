@@ -96,8 +96,10 @@ public class Pernil : AudioSyncer
     }
 
     // Restablecer el terreno a un plano al inicio del juego
-    void Start()
+    public override void Start()
     {
+        base.Start();  
+
         if (Application.isPlaying)
         {
             terrainData = terrain.terrainData;

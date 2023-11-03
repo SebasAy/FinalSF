@@ -24,7 +24,7 @@ public class AudioSyncer : MonoBehaviour
         m_isBeat = true;
     }
 
-    public void Start()
+    public virtual void Start()
     {
         bias = Random.Range(0f, 70f);
     }

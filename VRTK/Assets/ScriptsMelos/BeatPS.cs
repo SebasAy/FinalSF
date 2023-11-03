@@ -9,8 +9,9 @@ public class BeatPS : AudioSyncer
     private ParticleSystem.MainModule particleMainModule;
     public int emVal;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         particleMainModule = Ps.main;
     }
 
