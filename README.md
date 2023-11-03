@@ -1,4 +1,9 @@
 # FinalSF
+# Participantes
+Sebastian Ayala - sebasaa2002@gmail.com
+Emmanuel Echeverri - jose.joestrella101@gmail.com
+Esteban Gallon - esteban.gallon@upb.edu.co
+Aljenadro Angarita - alejandro.angaritap@upb.edu.co
 
 # Documentación de la evidencia evaluativa del proyecto final
 
