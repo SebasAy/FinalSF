@@ -546,7 +546,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306491026}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 89fff474ba0a95e49ae5cf261d4f8fcc, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: cb4b6d1bf9c978042b7931378995b776, type: 2}
 --- !u!1001 &382160096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4041,7 +4041,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361321426}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.89187646, z: 0, w: 0.45227912}
+  m_LocalRotation: {x: 0, y: -0.93333006, z: 0, w: 0.35901967}
   m_LocalPosition: {x: -115.811, y: 126.14, z: -51.592}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4052,7 +4052,7 @@ Transform:
   - {fileID: 827735841}
   - {fileID: 1080914035}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 593.78, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -137.92, z: 0}
 --- !u!1 &1385092618
 GameObject:
   m_ObjectHideFlags: 0
